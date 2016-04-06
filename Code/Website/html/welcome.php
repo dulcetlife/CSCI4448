@@ -44,13 +44,49 @@
 					<header class="major">
 						<h2>View all projects here</h2>
 						<p>Projects</p>
+						<form method="GET" action="search.php">
+							<div class="6u 12u$(xsmall)">
+								<input type="text" name="search_term"/>
+								<input type="submit" name = "submit" value = "Search source code"/>
+							</div>
+						</form>
 					</header>
 
-					<a href="#" class="image fit"><img src="images/pic08.jpg" alt="" /></a>
-					<p>Hello World</p>
-					<p>Hello World</p>
-					<p>Hello World</p>
+					
+					<div class="6u 12u$(small)">
+						<ul class="actions fit">
+							<li><a href="#" class="button alt fit">Python</a></li>
+							<li><a href="#" class="button alt fit">Javascript</a></li>
+							<li><a href="#" class="button alt fit">C++</a></li>
+				
+						</ul>
+						
+								
+					</div>
 
+					<div class="6u 12u$(small)">
+						<ul class="actions fit">
+							<li><a href="#" class="button alt fit">Java</a></li>
+							<li><a href="#" class="button alt fit">Ruby</a></li>
+							<li><a href="#" class="button alt fit">C</a></li>
+				
+						</ul>
+					</div>
+
+					<div class="6u 12u(small)">
+
+									<h4>Search by:</h4>
+									<ul>
+										<li><a href ='#'>Language</a></li>
+										<li><a href ='#'>Developer</a></li>
+										<li><a href ='#'>Date</a></li>
+										<li><a href ='#'>Stars</a></li>
+										<li><a href ='#'>Watchers</a></li>
+									</ul>
+
+					</div>
+
+									
 				</div>
 			</section>
 
