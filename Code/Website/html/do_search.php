@@ -14,10 +14,10 @@ if (isset($_POST['search'])) {
     if(count($row)) {
         $end_result = '';
         foreach($row as $r) {
-            $result         = $r['repo_name'];
+            $result = $r['repo_name'];
             // we will use this to bold the search word in result
-            $bold           = '<span class="found">' . $word . '</span>';    
-            $end_result     .= '<li>' . str_ireplace($word, $bold, $result) . '</li>';            
+            $bold = '<span class="found">' . $word . '</span>';    
+            $end_result .= '<li>' . str_ireplace($word, $bold, $result) . '</li>';            
         }
         echo $end_result;
     } else {

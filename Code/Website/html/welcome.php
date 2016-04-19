@@ -16,6 +16,47 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script type="text/javascript" src="js/jquery.watermark.js"></script>
+		<script type="text/javascript">
+ 
+ 
+      $(document).ready(function() {
+
+$("#faq_search_input").watermark("Begin Typing to Search");
+
+$("#faq_search_input").keyup(function()
+{
+var faq_search_input = $(this).val();
+var dataString = 'keyword='+ faq_search_input;
+if(faq_search_input.length>3)
+
+{
+$.ajax({
+type: "GET",
+url: "ajax-search.php",
+data: dataString,
+beforeSend:  function() {
+
+$('input#faq_search_input').addClass('loading');
+
+},
+success: function(server_response)
+{
+
+$('#searchresultdata').html(server_response).show();
+$('span#faq_category_title').html(faq_search_input);
+
+if ($('input#faq_search_input').hasClass("loading")) {
+ $("input#faq_search_input").removeClass("loading");
+        } 
+
+}
+});
+}return false;
+});
+});
+	  
+</script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -23,6 +64,7 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
+	
 	<body>
 
 		<!-- Header -->
@@ -44,12 +86,31 @@
 					<header class="major">
 						<h2>View all projects here</h2>
 						<p>Projects</p>
-						<form method="GET" action="search.php">
 							<div class="6u 12u$(xsmall)">
-								<input type="text" name="search_term"/>
-								<input type="submit" name = "submit" value = "Search source code"/>
+								div id="prod-content">
+      <div class="prod-subsubhead">
+        <h4 id="faq_title"> <strong>Search Results For : </strong> <span id="faq_category_title">Keyword </span> </h4>
+        <div class="prodtopline" style="border-bottom :1px solid #EDEDED;height:30px;width:900px;margin:0px auto;border-color:#333;"> </div>
+      </div>
+      <div class="prod-subcontent">
+        <div class="prod-lcol fl-left">
+          <div class="prod-content">
+            <div class="faqsearch">
+              <div class="faqsearchinputbox">
+                <!-- The Searchbox Starts Here  -->
+                <input  name="query" type="text" id="faq_search_input" />
+                <!-- The Searchbox Ends  Here  -->
+              </div>
+            </div>
+            <div id="searchresultdata" class="faq-articles"> </div>
+          </div>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+    <div class="prod-content-bottom"> </div>
+  </div>
 							</div>
-						</form>
 					</header>
 
 					

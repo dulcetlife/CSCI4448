@@ -8,5 +8,6 @@ CREATE TABLE repos (
 	watchers varchar(32) NOT NULL,
 	stars varchar(32) NOT NULL,
 	readme text NOT NULL,
-	PRIMARY KEY (id)
-);
+	UNIQUE KEY (id),
+	FULLTEXT idx (repo_name,username,language,readme)
+) ENGINE=MyISAM;
