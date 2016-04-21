@@ -69,11 +69,11 @@ if ($('input#faq_search_input').hasClass("loading")) {
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="welcome.php">Open Sourc Projects</a></h1>
+				<h1><a href="welcome.php">Open Source Projects</a></h1>
 				<nav id="nav">
 					<ul>
 						<li><a href="welcome.php">Home</a></li>
-						<li><a href="generic.php">Generic</a></li>
+						<li><a href="view_project.php">Generic</a></li>
 						<li><a href="elements.php">Elements</a></li>
 					</ul>
 				</nav>
@@ -87,8 +87,9 @@ if ($('input#faq_search_input').hasClass("loading")) {
 						<h2>View all projects here</h2>
 						<p>Projects</p>
 							<div class="6u 12u$(xsmall)">
-								div id="prod-content">
+								<div id="prod-content">
       <div class="prod-subsubhead">
+      	<central>
         <h4 id="faq_title"> <strong>Search Results For : </strong> <span id="faq_category_title">Keyword </span> </h4>
         <div class="prodtopline" style="border-bottom :1px solid #EDEDED;height:30px;width:900px;margin:0px auto;border-color:#333;"> </div>
       </div>
@@ -105,6 +106,7 @@ if ($('input#faq_search_input').hasClass("loading")) {
             <div id="searchresultdata" class="faq-articles"> </div>
           </div>
         </div>
+    </center>
         <div class="clearfix"> </div>
       </div>
     </div>
@@ -121,6 +123,7 @@ if ($('input#faq_search_input').hasClass("loading")) {
 							<li><a href="#" class="button alt fit">C++</a></li>
 				
 						</ul>
+
 						
 								
 					</div>
@@ -139,7 +142,7 @@ if ($('input#faq_search_input').hasClass("loading")) {
 									<h4>Search by:</h4>
 									<ul>
 										<li><a href ='#'>Language</a></li>
-										<li><a href ='#'>Developer</a></li>
+										<li><a href ='username-search.php'>Developer</a></li>
 										<li><a href ='#'>Date</a></li>
 										<li><a href ='#'>Stars</a></li>
 										<li><a href ='#'>Watchers</a></li>
