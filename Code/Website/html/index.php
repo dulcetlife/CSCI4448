@@ -1,23 +1,25 @@
+<?php
+session_start();
+if (isset($_SESSION['github_data'])) 
+{
+// Redirection to application home page.
+header("location: welcome.php");
+}
+//HTML Code
+
+?>
+
 <!DOCTYPE html>
 <!--
 	Interphase by TEMPLATED
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<?php
-session_start();
-if (isset($_SESSION['github_data'])) {
-// Redirection to application home page.
-header("location: home.php");
-}
-//HTML Code
-
-?>
 
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Interphase by TEMPLATED</title>
+		<title>Open Source Projects</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -37,7 +39,7 @@ header("location: home.php");
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="index.php">Open source projects</a></h1>
+				<h1><a href="index.php">Open Source Projects</a></h1>
 			</header>
 
 		<!-- Banner -->

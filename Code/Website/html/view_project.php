@@ -12,7 +12,7 @@ session_start();
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Generic - Interphase by TEMPLATED</title>
+		<title>Open Source Project</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -36,8 +36,7 @@ session_start();
 				<nav id="nav">
 					<ul>
 						<li><a href="welcome.php">Home</a></li>
-						<li><a href="generic.html">Generic</a></li>
-						<li><a href="view_project.php">Elements</a></li>
+						<li><a href="favorites.php">Favorites</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -46,15 +45,47 @@ session_start();
 			<section id="main" class="wrapper">
 				<div class="container">
 					<?php
+					include('Parsedown.php');
+
 					$repo_name = $_SESSION['repo_name'];
 					$readme = $_SESSION['readme'];
-					$myfile = fopen('test.txt', 'w');
-					$txt = 'John Doe';
-					fwrite($myfile, $txt);
-					//fwrite($myfile, $readme);
-					fclose($myfile);
-					//echo $repo_name;
-					echo $readme
+					$language = $_SESSION['language'];
+					$developer = $_SESSION['username'];
+					
+					echo '<span><a href="/change-favorites.php?change=add&repo_name='.$repo_name.'" class="button">Add to Favorites!</a></span>';
+					echo "<BR>";
+					echo "Repository Name: ", $repo_name;
+					echo "<BR>";
+					echo "Software Language: ", $language;
+					echo "<BR>";
+					echo "Developer Name: ", $developer;
+					echo "<BR>";
+					echo "<br>";
+
+					$Parsedown = new Parsedown();
+
+					echo $Parsedown->text($readme);
+
+					/*echo 'Raw readme file:';
+					echo '<br>';
+					echo '<br>';
+					echo $readme;
+					
+					echo "Readme file contents:";
+					echo '<br>';
+					echo '<br>';
+					echo $contents;
+
+					echo 'Readme after parsed:';
+					echo '<br>';
+					echo '<br>';
+					echo $Parsedown->text($readme);
+
+					echo '<br>';
+					echo 'END';
+
+					//echo $readme;
+					*/
 					?>
 
 				</div>

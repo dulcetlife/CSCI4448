@@ -1,14 +1,22 @@
 <?php
 require_once('githubConfig.php');
-#require_once('githubApi.php');   
+//require_once('/var/www/html/vendor/autoload.php');  
+//Github_Autoloader::register(); 
 if($_SERVER['REQUEST_METHOD'] == 'GET')
 {
 if(isset($_GET['code']))
 {
-$git = new githubApi($config);
-$git->getUserDetails();
-$_SESSION['github_data']=$git->getAllUserDetails();
-header("location: home.php");
+
+//$client = new Github\Client();
+//$user = $client->api('user')->show('dulcetlife');
+//echo $user;
+$test = 1;
+//$git = new githubApi($config);
+//$git->getUserDetails();
+//$_SESSION['github_data']=$git->getAllUserDetails();
+//$_SESSION['github_data'] = $user;
+
+header("location: welcome.php");
 }
 else
 {

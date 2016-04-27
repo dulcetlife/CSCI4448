@@ -7,7 +7,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Generic - Interphase by TEMPLATED</title>
+		<title>Open Source Project</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -18,45 +18,101 @@
 		<script src="js/init.js"></script>
 		<script type="text/javascript" src="js/jquery.watermark.js"></script>
 		<script type="text/javascript">
- 
- 
-      $(document).ready(function() {
+
+
+		$(document).ready(function() {
 
 $("#faq_search_input").watermark("Begin Typing to Search");
 
 $("#faq_search_input").keyup(function()
 {
+
+var QueryString = function () {
+  // This function is anonymous, is executed immediately and 
+  // the return value is assigned to QueryString!
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+        // If first entry with this name
+    console.log(vars[i]);
+	var temp = vars[i];
+	}
+	return temp;
+}();
+
+var myQueryString = QueryString;
+
+
 var faq_search_input = $(this).val();
 var dataString = 'keyword='+ faq_search_input;
-if(faq_search_input.length>3)
 
+if(faq_search_input.length>1)
 {
+
+var myQueryString = QueryString;
+
+console.log(myQueryString);
+console.log(dataString);
+
+if(myQueryString)
+{
+console.log("Using filter", myQueryString);
+var urlLink = "ajax-search.php?filter="+ myQueryString;	
 $.ajax({
-type: "GET",
-url: "ajax-search.php",
-data: dataString,
-beforeSend:  function() {
+	type:"GET",
+	url: urlLink,
+	data:dataString,
+	beforeSend: function() {
 
-$('input#faq_search_input').addClass('loading');
+	$('input#faq_search_input').addClass('loading');
 
-},
-success: function(server_response)
+	},
+	success: function(server_response)
+	{
+	$('#searchresultdata').html(server_response).show();
+	$('span#faq_category_title').html(faq_search_input);
+
+	if ($('input#faq_search_input').hasClass("loading")) 
+	{
+		$("input#faq_search_input").removeClass("loading");
+	}	
+	
+}
+});
+}
+else
 {
+console.log("Not using a filter");
+$.ajax({
+	type:"GET",
+	url: "ajax-search.php",
+	data:dataString,
+	beforeSend: function() {
 
-$('#searchresultdata').html(server_response).show();
-$('span#faq_category_title').html(faq_search_input);
+	$('input#faq_search_input').addClass('loading');
 
-if ($('input#faq_search_input').hasClass("loading")) {
- $("input#faq_search_input").removeClass("loading");
-        } 
+	},
+	success: function(server_response)
+	{
+	$('#searchresultdata').html(server_response).show();
+	$('span#faq_category_title').html(faq_search_input);
 
+	if ($('input#faq_search_input').hasClass("loading")) 
+	{
+		$("input#faq_search_input").removeClass("loading");
+	}	
+	
 }
 });
 }return false;
+}
 });
 });
-	  
+
 </script>
+
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -73,8 +129,7 @@ if ($('input#faq_search_input').hasClass("loading")) {
 				<nav id="nav">
 					<ul>
 						<li><a href="welcome.php">Home</a></li>
-						<li><a href="view_project.php">Generic</a></li>
-						<li><a href="elements.php">Elements</a></li>
+						<li><a href="favorites.php">Favorites</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -86,12 +141,16 @@ if ($('input#faq_search_input').hasClass("loading")) {
 					<header class="major">
 						<h2>View all projects here</h2>
 						<p>Projects</p>
+						
+						<div class="6u 12u$(xsmall)">
+							<a href="view-random.php" class="button alt fit">Random</a>
+						</div>
+						
 							<div class="6u 12u$(xsmall)">
 								<div id="prod-content">
       <div class="prod-subsubhead">
-      	<central>
-        <h4 id="faq_title"> <strong>Search Results For : </strong> <span id="faq_category_title">Keyword </span> </h4>
-        <div class="prodtopline" style="border-bottom :1px solid #EDEDED;height:30px;width:900px;margin:0px auto;border-color:#333;"> </div>
+      	<center>
+        <h4 id="faq_title"> <strong>Search: </strong> <span id="faq_category_title"> </span> </h4>
       </div>
       <div class="prod-subcontent">
         <div class="prod-lcol fl-left">
@@ -112,15 +171,14 @@ if ($('input#faq_search_input').hasClass("loading")) {
     </div>
     <div class="prod-content-bottom"> </div>
   </div>
-							</div>
 					</header>
 
 					
 					<div class="6u 12u$(small)">
 						<ul class="actions fit">
-							<li><a href="#" class="button alt fit">Python</a></li>
-							<li><a href="#" class="button alt fit">Javascript</a></li>
-							<li><a href="#" class="button alt fit">C++</a></li>
+							<li><a href="view-python.php" class="button alt fit">Python</a></li>
+							<li><a href="view-javascript.php" class="button alt fit">Javascript</a></li>
+							<li><a href="view-cc.php" class="button alt fit">C++</a></li>
 				
 						</ul>
 
@@ -130,9 +188,9 @@ if ($('input#faq_search_input').hasClass("loading")) {
 
 					<div class="6u 12u$(small)">
 						<ul class="actions fit">
-							<li><a href="#" class="button alt fit">Java</a></li>
-							<li><a href="#" class="button alt fit">Ruby</a></li>
-							<li><a href="#" class="button alt fit">C</a></li>
+							<li><a href="view-java.php" class="button alt fit">Java</a></li>
+							<li><a href="view-ruby.php" class="button alt fit">Ruby</a></li>
+							<li><a href="view-c.php" class="button alt fit">C</a></li>
 				
 						</ul>
 					</div>
@@ -141,16 +199,16 @@ if ($('input#faq_search_input').hasClass("loading")) {
 
 									<h4>Search by:</h4>
 									<ul>
-										<li><a href ='#'>Language</a></li>
-										<li><a href ='username-search.php'>Developer</a></li>
-										<li><a href ='#'>Date</a></li>
+
+										<li><a href ='welcome.php'>Language</a></li>
+										<li><a href ='view-username.php'>Developer</a></li>
 										<li><a href ='#'>Stars</a></li>
-										<li><a href ='#'>Watchers</a></li>
+										<li><a href ='view-watchers.php'>Watchers</a></li>
+
 									</ul>
 
 					</div>
-
-									
+						
 				</div>
 			</section>
 

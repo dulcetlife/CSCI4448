@@ -1,0 +1,9 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    }
+"require": {
+        "knplabs/github-api": "~1.4"
+    }
+}
+}
